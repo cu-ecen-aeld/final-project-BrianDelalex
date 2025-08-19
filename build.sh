@@ -1,6 +1,11 @@
 #!/bin/bash
 # Script to build image for RaspberryPi 4.
 
+ninja -v
+if [ $? -ne 0 ]; then
+	exit 1
+fi
+
 git submodule init
 git submodule sync
 git submodule update
