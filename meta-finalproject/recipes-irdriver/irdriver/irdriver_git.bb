@@ -1,0 +1,41 @@
+# Recipe created by recipetool
+# This is the basis of a recipe and may need further editing in order to be fully functional.
+# (Feel free to remove these comments when editing.)
+
+# WARNING: the following LICENSE and LIC_FILES_CHKSUM values are best guesses - it is
+# your responsibility to verify that the values are complete and correct.
+#
+# The following license files were not able to be identified and are
+# represented as "Unknown" below, you will need to check them yourself:
+#   LICENSE
+LICENSE = "Unknown"
+LIC_FILES_CHKSUM = "file://../LICENSE;md5=4ae09d45eac4aa08d013b5f2e01c67f6"
+
+SRC_URI = "git://git@github.com/BrianDelalex/simple-ir-driver.git;protocol=ssh;branch=main"
+
+# Modify these as desired
+PV = "1.0+git${SRCPV}"
+SRCREV = "2713474a4b26531aea7de7b82aa73d62df95d9c3"
+
+inherit module
+
+S = "${WORKDIR}/git/irdriver"
+
+EXTRA_OEMAKE:append:task-install = " -C ${STAGING_KERNEL_DIR} M=${S}"
+EXTRA_OEMAKE += "KERNELDIR=${STAGING_KERNEL_DIR}"
+
+do_configure () {
+	:
+}
+
+do_compile () {
+    bbdebug 2 "EXTRA_OEMAKE: ${EXTRA_OEMAKE}"
+    bbdebug 2 "S: ${S}"
+	oe_runmake
+}
+
+do_install () {
+    # Installing module
+    install -d ${D}${base_libdir}/modules/${KERNEL_VERSION}/extra
+    install -m 0755 ${S}/irdriver.ko ${D}${base_libdir}/modules/${KERNEL_VERSION}/extra
+}
