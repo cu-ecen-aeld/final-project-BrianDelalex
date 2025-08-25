@@ -15,7 +15,7 @@ SRC_URI = "git://git@github.com/BrianDelalex/simple-ir-driver.git;protocol=ssh;b
 
 # Modify these as desired
 PV = "1.0+git${SRCPV}"
-SRCREV = "2713474a4b26531aea7de7b82aa73d62df95d9c3"
+SRCREV = "3caee180f8443f6d49ba84108b5245653edac208"
 
 inherit module
 
