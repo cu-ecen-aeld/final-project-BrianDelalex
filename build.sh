@@ -23,6 +23,18 @@ else
 	echo "${CONFLINE} already exists in the local.conf file"
 fi
 
+KEYMAP="IMAGE_INSTALL:append = \"kbd-keymaps\""
+cat conf/local.conf | grep "${KEYMAP}" > /dev/null
+local_conf_info=$?
+
+if [ $local_conf_info -ne 0 ];then
+	echo "Append ${KEYMAP} in the local.conf file"
+	echo ${KEYMAP} >> conf/local.conf
+	
+else
+	echo "${KEYMAP} already exists in the local.conf file"
+fi
+
 bitbake-layers show-layers | grep "meta-finalproject" > /dev/null
 layer_info=$?
 
