@@ -1,0 +1,13 @@
+header:
+  version: 14
+  includes:  
+  - kas/raspberrypi4-64.yml
+
+repos:
+  meta-finalproject:
+    layers:
+      meta-finalproject:
+
+target:
+  - core-image-finalproject
+
