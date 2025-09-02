@@ -4,3 +4,7 @@
 [submodule "meta-raspberrypi"]
 	path = meta-raspberrypi
 	url = https://git.yoctoproject.org/git/meta-raspberrypi
+[submodule "meta-mender-community"]
+	path = meta-mender-community
+	url = https://github.com/mendersoftware/meta-mender-community
+	branch = kirkstone
